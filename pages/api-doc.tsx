@@ -53,6 +53,8 @@ export default function Api(): JSX.Element {
       <p>
         <em>Humpf</em> has three main exports as well as four types for
         TypeScript users:
+        <br />
+        (you can click on each to scroll to corresponding section)
       </p>
       {/* <CodeBlock
         code={`
@@ -125,9 +127,10 @@ export default function Api(): JSX.Element {
       <Presets />
       <h3>Decay</h3>
       <p>
-        Decay take a <SectionLink to="spring-config-type" /> and update the{" "}
-        <code>equilibrium</code> depending on the <code>velocity</code>. Is also
-        set the <code>dampingRatio</code> to <code>1</code>
+        Decay take a <SectionLink to="spring-config-type" /> and returns a new{" "}
+        <SectionLink to="spring-config-type" /> where the{" "}
+        <code>equilibrium</code> is proportional to the <code>velocity</code>{" "}
+        and the <code>dampingRatio</code> is <code>1</code>
       </p>
       <Decay />
       <p>
@@ -242,11 +245,44 @@ export default function Api(): JSX.Element {
           }
         `}
       />
+      <p>Here is a small example combining everything above:</p>
+      <CodeBlock
+        code={`
+          import { Spring, SpringConfig } from "humpf";
+
+          const spring = Spring(SpringConfig.basic());
+
+          spring(0); // { pos: 0, vel: 0}
+          spring(200); // { pos: 59, vel: 27 }
+          spring(400); // { pos: 90, vel: 7 }
+          spring(600); // { pos: 98, vel: 1 }
+          spring(800); // { pos: 100, vel: 0 }
+        `}
+      />
       <SectionTitle title="spring-value" token="export" />
       <blockquote>
-        The SpringValue constructor is a higher level tool to manage a spring
-        animated value over time.
+        The <code>SpringValue</code> constructor is a higher level tool to
+        manage a spring animated value over time.
       </blockquote>
+      <p>
+        <code>SpringValue</code> is a function that take two optional
+        parameters:
+      </p>
+      <ul>
+        <li>
+          A <SectionLink to="spring-config-type" /> object to setup the initial
+          spring
+        </li>
+        <li>
+          A option object of type <SectionLink to="spring-value-options" />
+        </li>
+      </ul>
+      <CodeBlock
+        code={`
+          const value = SpringValue();
+        `}
+      />
+      {/* TODO: Codesandbox link ! */}
       <SectionTitle title="spring-value-options" token="type" />
       <CodeBlock
         code={`
