@@ -9,6 +9,7 @@ import { LinearCurve } from "../canvas/LinearCurve";
 import { EasingCurve } from "../canvas/EasingCurve";
 import { DampingRatioToOne } from "../canvas/DampingRatioToOne";
 import { AngularFrequency } from "../canvas/AngularFrequency";
+import { Config } from "../canvas/Config";
 
 // import { DampingRatio } from "../canvas/DampingRatio";
 // import { AngularFrequency } from "../canvas/AngularFrequency";
@@ -34,7 +35,7 @@ export default function Article(): JSX.Element {
         Let's start by the most important part: what is a <em>damped spring</em>{" "}
         ?
       </p>
-      <h2>What is a damped springs</h2>
+      <h2>What is a damped springs ?</h2>
       <p>
         A{" "}
         <a href="http://www.ryanjuckett.com/programming/damped-springs/">
@@ -189,13 +190,17 @@ export default function Article(): JSX.Element {
       <p>
         The angular frenquency is the frequency at which the spring goes back
         and forth. The easiest way to visualize this is with a spring with a{" "}
-        <em>damping ratio</em> of <code>0</code>
+        <em>damping ratio</em> of <code>0</code>.
       </p>
       <AngularFrequency />
       <p>
-        Remember that here the <em>damping ratio</em> is <code>0</code> so the
-        spring will bounce forever.
+        Note that here, because the <em>damping ratio</em> is <code>0</code>,
+        the spring will bounce forever.
       </p>
+      <p>Now let's combine the two !</p>
+      <h3>Angular Frequency & Damping Ratio</h3>
+      <Config showCode={false} />
+      <p></p>
     </MainLayout>
   );
 }

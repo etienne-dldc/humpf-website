@@ -142,6 +142,16 @@ export const Exports: React.FC = () => {
         <span className="token maybe-class-name">
           <SectionLink to="spring-config-type">SpringConfig</SectionLink>
         </span>
+        <span
+          className="token punctuation"
+          style={{ color: "rgb(199, 146, 234)" }}
+        >
+          ,
+        </span>
+        <span className="token plain"> </span>
+        <span className="token maybe-class-name">
+          <SectionLink to="spring-config-type">SpringValue</SectionLink>
+        </span>
         <span className="token plain"> </span>
         <span
           className="token punctuation"

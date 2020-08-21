@@ -51,7 +51,7 @@ export default function Api(): JSX.Element {
       />
       <SectionTitle title="imports" />
       <p>
-        <em>Humpf</em> has three main exports as well as four types for
+        <em>Humpf</em> has three main exports as well as a few types for
         TypeScript users:
         <br />
         (you can click on each to scroll to corresponding section)
@@ -277,13 +277,21 @@ export default function Api(): JSX.Element {
           A option object of type <SectionLink to="spring-value-options" />
         </li>
       </ul>
+      <p>
+        The resuld of this function is a <SectionLink to="spring-value-type" />{" "}
+        type.
+      </p>
       <CodeBlock
         code={`
-          const value = SpringValue();
+          const value = SpringValue(initialSpringConfig, options);
         `}
       />
       {/* TODO: Codesandbox link ! */}
       <SectionTitle title="spring-value-options" token="type" />
+      <p>
+        The <code>SpringValueOptions</code> type is used to create a{" "}
+        <SectionLink to="spring-value" />.
+      </p>
       <CodeBlock
         code={`
           export interface SpringValueOptions {
@@ -294,6 +302,7 @@ export default function Api(): JSX.Element {
           }
         `}
       />
+      <SectionTitle title="spring-value-type" token="type" />
     </MainLayout>
   );
 }

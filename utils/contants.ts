@@ -7,5 +7,6 @@ export const API_ANCHORS = {
   "spring-fn": "SpringFn",
   "spring-result": "SpringResult",
   "spring-value": "SpringValue",
+  "spring-value-type": "SpringValue",
   "spring-value-options": "SpringValueOptions",
 } as const;
