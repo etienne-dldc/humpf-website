@@ -90,7 +90,7 @@ export const Exports: React.FC = () => {
           className="token comment"
           style={{ color: "rgb(99, 119, 119)", fontStyle: "italic" }}
         >
-          {"// This is for TypeScript users only"}
+          {"// Types exports (for TypeScript users only)"}
         </span>
         <span className="token plain" />
       </div>

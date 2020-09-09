@@ -8,6 +8,7 @@ import { Decay } from "../canvas/Decay";
 import { DecayAngularFreq } from "../canvas/DecayAngularFreq";
 import { Exports } from "../components/Exports";
 import { API_ANCHORS } from "../utils/contants";
+import { SpringValueDemo } from "../components/SpringValueDemo";
 
 const SectionLink: React.FC<{
   to: keyof typeof API_ANCHORS;
@@ -56,14 +57,6 @@ export default function Api(): JSX.Element {
         <br />
         (you can click on each to scroll to corresponding section)
       </p>
-      {/* <CodeBlock
-        code={`
-          import { Spring, SpringConfig, SpringValue } from 'humpf';
-
-          // This is for TypeScript users only
-          import { SpringValueOptions, SpringFn, SpringResult, SpringConfig } from 'humpf';
-        `}
-      /> */}
       <Exports />
       <SectionTitle title="spring" token="export" />
       <blockquote>
@@ -88,8 +81,7 @@ export default function Api(): JSX.Element {
       />
       <p>
         This <code>config</code> object must be of type{" "}
-        <SectionLink to="spring-config-type" /> (all th properties are
-        optional).
+        <SectionLink to="spring-config-type" /> (all properties are optional).
       </p>
       <SectionTitle title="spring-config" token="export" />
       <blockquote>
@@ -131,6 +123,10 @@ export default function Api(): JSX.Element {
         <SectionLink to="spring-config-type" /> where the{" "}
         <code>equilibrium</code> is proportional to the <code>velocity</code>{" "}
         and the <code>dampingRatio</code> is <code>1</code>
+      </p>
+      <p className="Note">
+        You can use this to animate the end of a "drag" motion, once the user
+        lift its finger but the object has some velocity left.
       </p>
       <Decay />
       <p>
@@ -295,14 +291,37 @@ export default function Api(): JSX.Element {
       <CodeBlock
         code={`
           export interface SpringValueOptions {
-            velocityThreshold: number;
-            positionThreshold: number;
+            velocityThreshold: number; // (default: 0.01)
+            positionThreshold: number; // (default: 0.001)
             onSpringChange: () => void;
             now: () => number;
           }
         `}
       />
       <SectionTitle title="spring-value-type" token="type" />
+      <CodeBlock
+        code={`
+          export interface SpringValue {
+            // get the current position
+            position: () => number;
+            // get the current velocity
+            velocity: () => number;
+            // is the current motion stable (done)
+            stable: () => boolean;
+            // get the current SpringConfig
+            getConfig: () => Readonly<Required<SpringConfig>>;
+            // Update the internal SpringConfig with a decay
+            decay: (angularFrequency?: number) => void;
+            // Update the internal SpringConfig and compute
+            // timeStart, position and velocity to get a continuous motion
+            update: (config: Partial<SpringConfig>) => void;
+            // Same as update except the config will override
+            // timeStart, position and velocity if provided
+            replace: (config: Partial<SpringConfig>) => void;
+          }
+        `}
+      />
+      <SpringValueDemo />
     </MainLayout>
   );
 }
