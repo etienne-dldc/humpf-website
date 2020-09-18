@@ -1,7 +1,6 @@
 import React from "react";
 import { MainLayout } from "../components/MainLayout";
 import { CodeBlock } from "../components/CodeBlock";
-//
 import { BasicSpring } from "../canvas/BasicSpring";
 import { StepByStepLinear } from "../canvas/StepByStepLinear";
 import { StepByStepMove } from "../canvas/StepByStepMove";
@@ -11,9 +10,6 @@ import { DampingRatioToOne } from "../canvas/DampingRatioToOne";
 import { AngularFrequency } from "../canvas/AngularFrequency";
 import { Config } from "../canvas/Config";
 import Head from "next/head";
-
-// import { DampingRatio } from "../canvas/DampingRatio";
-// import { AngularFrequency } from "../canvas/AngularFrequency";
 
 export default function Article(): JSX.Element {
   return (
