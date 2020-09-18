@@ -1,7 +1,7 @@
 import React, { useCallback, useRef } from "react";
-import { InitCanvas, Canvas } from "./Canvas";
+import { InitCanvas, Canvas } from "../components/Canvas";
 import { SpringValue, SpringConfig } from "humpf";
-import { CodeBlock } from "./CodeBlock";
+import { CodeBlock } from "../components/CodeBlock";
 
 export const SpringValueDemo: React.FC = () => {
   const divRef = useRef<HTMLDivElement>(null);
@@ -43,7 +43,7 @@ export const SpringValueDemo: React.FC = () => {
         ctx.clearRect(0, 0, width, height);
         ctx.beginPath();
         ctx.arc(x, height / 2, ballSize / 2, 0, 2 * Math.PI);
-        ctx.fillStyle = "red";
+        ctx.fillStyle = "#E53935";
         ctx.fill();
       },
       unmount: () => {
@@ -59,38 +59,33 @@ export const SpringValueDemo: React.FC = () => {
       </div>
       <CodeBlock
         code={`
+          // create the SpringValue
           const xValue = SpringValue();
 
-          let pointerId: number | null = null;
-          const moveOrDown = (event: PointerEvent) => {
+          // update the equilibrium when the mouse move
+          body.addEventListener("mousemove", (event) => {
             event.preventDefault();
-            if (pointerId === null) {
-              pointerId = event.pointerId;
-            }
-            if (event.pointerId === pointerId) {
-              xValue.update({ equilibrium: event.offsetX - 15 });
-            }
-          };
-
-          elem.addEventListener("pointermove", moveOrDown);
-          elem.addEventListener("pointerdown", moveOrDown);
-
-          elem.addEventListener("pointerleave", (event) => {
-            if (event.pointerId === pointerId) {
-              pointerId = null;
-            }
+            xValue.update({ equilibrium: event.clientX - 15 });
           });
 
+          // on each frame update the position of the bass
           function render() {
             const x = xValue.position();
-            ctx.clearRect(0, 0, width, height);
-            ctx.beginPath();
-            ctx.arc(x, height / 2, ballSize / 2, 0, 2 * Math.PI);
-            ctx.fillStyle = "red";
-            ctx.fill();
+            ballElement.style.transform = ${"`translate(${x}px, 0px)`"};
+            requestAnimationFrame(render);
           }
+
+          // start the render loop
+          render();
         `}
       />
+      <a
+        href="https://codesandbox.io/s/springvalue-follow-mouse-linear-tbo00?file=/src/index.ts"
+        target="_blank"
+        rel="noreferrer"
+      >
+        Open in CodeSandbox
+      </a>
     </div>
   );
 };

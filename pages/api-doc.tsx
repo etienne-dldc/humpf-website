@@ -8,7 +8,8 @@ import { Decay } from "../canvas/Decay";
 import { DecayAngularFreq } from "../canvas/DecayAngularFreq";
 import { Exports } from "../components/Exports";
 import { API_ANCHORS } from "../utils/contants";
-import { SpringValueDemo } from "../components/SpringValueDemo";
+import { SpringValueDemo } from "../canvas/SpringValueDemo";
+import Head from "next/head";
 
 const SectionLink: React.FC<{
   to: keyof typeof API_ANCHORS;
@@ -40,60 +41,64 @@ const SectionTitle: React.FC<{
 
 export default function Api(): JSX.Element {
   return (
-    <MainLayout currentPage="api" key="main">
-      <SectionTitle title="installation" />
-      <CodeBlock
-        language="bash"
-        code={`
+    <React.Fragment>
+      <Head>
+        <title>Humpf - API</title>
+      </Head>
+      <MainLayout currentPage="api" key="main">
+        <SectionTitle title="installation" />
+        <CodeBlock
+          language="bash"
+          code={`
           npm install humpf
           # here is the copy/paste for yarn
           yarn add humpf
         `}
-      />
-      <SectionTitle title="imports" />
-      <p>
-        <em>Humpf</em> has three main exports as well as a few types for
-        TypeScript users:
-        <br />
-        (you can click on each to scroll to corresponding section)
-      </p>
-      <Exports />
-      <SectionTitle title="spring" token="export" />
-      <blockquote>
-        Create a spring function using an optional config.
-      </blockquote>
-      <CodeBlock
-        code={`
+        />
+        <SectionTitle title="imports" />
+        <p>
+          <em>Humpf</em> has three main exports as well as a few types for
+          TypeScript users:
+          <br />
+          (you can click on each to scroll to corresponding section)
+        </p>
+        <Exports />
+        <SectionTitle title="spring" token="export" />
+        <blockquote>
+          Create a spring function using an optional config.
+        </blockquote>
+        <CodeBlock
+          code={`
           const spring = Spring();
         `}
-      />
-      <p>
-        This function returns a <SectionLink to="spring-fn" /> function.
-      </p>
-      <p>
-        The <code>Spring</code> function accept an optional <code>config</code>{" "}
-        parameter.
-      </p>
-      <CodeBlock
-        code={`
+        />
+        <p>
+          This function returns a <SectionLink to="spring-fn" /> function.
+        </p>
+        <p>
+          The <code>Spring</code> function accept an optional{" "}
+          <code>config</code> parameter.
+        </p>
+        <CodeBlock
+          code={`
           const spring = Spring({ equilibrium: 200 });
         `}
-      />
-      <p>
-        This <code>config</code> object must be of type{" "}
-        <SectionLink to="spring-config-type" /> (all properties are optional).
-      </p>
-      <SectionTitle title="spring-config" token="export" />
-      <blockquote>
-        The SpringConfig namespace contains a few helper function to create and
-        minipulate <SectionLink to="spring-config-type" /> object.
-      </blockquote>
-      <p className="Note">
-        The <code>SpringConfig</code> export is also a type, see below for the
-        definition of that type.
-      </p>
-      <CodeBlock
-        code={`
+        />
+        <p>
+          This <code>config</code> object must be of type{" "}
+          <SectionLink to="spring-config-type" /> (all properties are optional).
+        </p>
+        <SectionTitle title="spring-config" token="export" />
+        <blockquote>
+          The SpringConfig namespace contains a few helper function to create
+          and minipulate <SectionLink to="spring-config-type" /> object.
+        </blockquote>
+        <p className="Note">
+          The <code>SpringConfig</code> export is also a type, see below for the
+          definition of that type.
+        </p>
+        <CodeBlock
+          code={`
         export const SpringConfig = {
           // presets
           basic,
@@ -110,81 +115,81 @@ export default function Api(): JSX.Element {
           angularFrequencyFromSpringConstant
         };
       `}
-      />
-      <h3>Presets</h3>
-      <p>
-        Preset functions let you create pre defined{" "}
-        <SectionLink to="spring-config-type" /> object.
-      </p>
-      <Presets />
-      <h3>Decay</h3>
-      <p>
-        Decay take a <SectionLink to="spring-config-type" /> and returns a new{" "}
-        <SectionLink to="spring-config-type" /> where the{" "}
-        <code>equilibrium</code> is proportional to the <code>velocity</code>{" "}
-        and the <code>dampingRatio</code> is <code>1</code>
-      </p>
-      <p className="Note">
-        You can use this to animate the end of a "drag" motion, once the user
-        lift its finger but the object has some velocity left.
-      </p>
-      <Decay />
-      <p>
-        You can adjust the "force" of the decay by changing the{" "}
-        <code>angularFrequency</code>
-      </p>
-      <DecayAngularFreq />
-      <h3>Static</h3>
-      <p>
-        The <code>SpringConfig.static</code> function produce a spring that does
-        not move.
-      </p>
-      <CodeBlock
-        code={`
+        />
+        <h3>Presets</h3>
+        <p>
+          Preset functions let you create pre defined{" "}
+          <SectionLink to="spring-config-type" /> object.
+        </p>
+        <Presets />
+        <h3>Decay</h3>
+        <p>
+          Decay take a <SectionLink to="spring-config-type" /> and returns a new{" "}
+          <SectionLink to="spring-config-type" /> where the{" "}
+          <code>equilibrium</code> is proportional to the <code>velocity</code>{" "}
+          and the <code>dampingRatio</code> is <code>1</code>
+        </p>
+        <p className="Note">
+          You can use this to animate the end of a "drag" motion, once the user
+          lift its finger but the object has some velocity left.
+        </p>
+        <Decay />
+        <p>
+          You can adjust the "force" of the decay by changing the{" "}
+          <code>angularFrequency</code>
+        </p>
+        <DecayAngularFreq />
+        <h3>Static</h3>
+        <p>
+          The <code>SpringConfig.static</code> function produce a spring that
+          does not move.
+        </p>
+        <CodeBlock
+          code={`
           const spring = Spring(SpringConfig.static(200));
 
           spring(time); // { pos: 200, vel: 0 }
         `}
-      />
-      <h3>findEquilibrium</h3>
-      <p>
-        Take a <code>velocity</code> and an optional{" "}
-        <code>angularFrequency</code> and return the decay{" "}
-        <code>equilibrium</code>.
-      </p>
-      <CodeBlock
-        code={`
+        />
+        <h3>findEquilibrium</h3>
+        <p>
+          Take a <code>velocity</code> and an optional{" "}
+          <code>angularFrequency</code> and return the decay{" "}
+          <code>equilibrium</code>.
+        </p>
+        <CodeBlock
+          code={`
           const equilibrium = SpringConfig.findEquilibrium(50, 2);
         `}
-      />
-      <h3>angularFrequencyFromMass</h3>
-      <p>
-        Take a <code>mass</code> and an optional <code>springContant</code> and
-        return the corresponding <code>angularFrequency</code>.
-      </p>
-      <CodeBlock
-        code={`
+        />
+        <h3>angularFrequencyFromMass</h3>
+        <p>
+          Take a <code>mass</code> and an optional <code>springContant</code>{" "}
+          and return the corresponding <code>angularFrequency</code>.
+        </p>
+        <CodeBlock
+          code={`
           const angularFrequency = SpringConfig.angularFrequencyFromMass(100, 1);
         `}
-      />
-      <h3>angularFrequencyFromSpringConstant</h3>
-      <p>
-        Take a <code>springContant</code> and an optional <code>mass</code> and
-        return the corresponding <code>angularFrequency</code>.
-      </p>
-      <CodeBlock
-        code={`
+        />
+        <h3>angularFrequencyFromSpringConstant</h3>
+        <p>
+          Take a <code>springContant</code> and an optional <code>mass</code>{" "}
+          and return the corresponding <code>angularFrequency</code>.
+        </p>
+        <CodeBlock
+          code={`
           const angularFrequency = SpringConfig.angularFrequencyFromMass(1, 100);
         `}
-      />
-      <SectionTitle title="spring-config-type" token="type" />
-      <blockquote>
-        The <code>SpringConfig</code> type is used to create a{" "}
-        <SectionLink to="spring" />
-      </blockquote>
-      <p>Here are all its properties as well as the default values.</p>
-      <CodeBlock
-        code={`
+        />
+        <SectionTitle title="spring-config-type" token="type" />
+        <blockquote>
+          The <code>SpringConfig</code> type is used to create a{" "}
+          <SectionLink to="spring" />
+        </blockquote>
+        <p>Here are all its properties as well as the default values.</p>
+        <CodeBlock
+          code={`
           const DEFAULT_CONFIG: SpringConfig = {
             // initial position
             position: 0,
@@ -202,48 +207,49 @@ export default function Api(): JSX.Element {
             timeStart: 0
           };
         `}
-      />
-      <p className="Note">
-        To better understand the different options of the spring and how to use
-        them take a look a the{" "}
-        <Link href="/article">
-          <a>Article</a>
-        </Link>
-        .
-      </p>
-      <SectionTitle title="spring-fn" token="type" />
-      <blockquote>
-        The <code>SpringFn</code> type is the function returned by the{" "}
-        <SectionLink to="spring" /> function.
-      </blockquote>
-      <p>
-        This function take only one parameter: the time (as a number) and return
-        a <SectionLink to="spring-result" /> object.
-      </p>
-      <CodeBlock
-        code={`
+        />
+        <p className="Note">
+          To better understand the different options of the spring and how to
+          use them take a look a the{" "}
+          <Link href="/article">
+            <a>Article</a>
+          </Link>
+          .
+        </p>
+        <SectionTitle title="spring-fn" token="type" />
+        <blockquote>
+          The <code>SpringFn</code> type is the function returned by the{" "}
+          <SectionLink to="spring" /> function.
+        </blockquote>
+        <p>
+          This function take only one parameter: the time (as a number) and
+          return a <SectionLink to="spring-result" /> object.
+        </p>
+        <CodeBlock
+          code={`
           type SpringFn = (t: number) => SpringResult;
         `}
-      />
-      <SectionTitle title="spring-result" token="type" />
-      <blockquote>
-        This object is the result of calling a <SectionLink to="spring-fn" />
-      </blockquote>
-      <p>
-        This object contains two property <code>pos</code> and <code>vel</code>,
-        corresponding to the position and velocity of the spring motion.
-      </p>
-      <CodeBlock
-        code={`
+        />
+        <SectionTitle title="spring-result" token="type" />
+        <blockquote>
+          This object is the result of calling a <SectionLink to="spring-fn" />
+        </blockquote>
+        <p>
+          This object contains two property <code>pos</code> and{" "}
+          <code>vel</code>, corresponding to the position and velocity of the
+          spring motion.
+        </p>
+        <CodeBlock
+          code={`
           interface SpringResult {
             pos: number;
             vel: number;
           }
         `}
-      />
-      <p>Here is a small example combining everything above:</p>
-      <CodeBlock
-        code={`
+        />
+        <p>Here is a small example combining everything above:</p>
+        <CodeBlock
+          code={`
           import { Spring, SpringConfig } from "humpf";
 
           const spring = Spring(SpringConfig.basic());
@@ -254,42 +260,42 @@ export default function Api(): JSX.Element {
           spring(600); // { pos: 98, vel: 1 }
           spring(800); // { pos: 100, vel: 0 }
         `}
-      />
-      <SectionTitle title="spring-value" token="export" />
-      <blockquote>
-        The <code>SpringValue</code> constructor is a higher level tool to
-        manage a spring animated value over time.
-      </blockquote>
-      <p>
-        <code>SpringValue</code> is a function that take two optional
-        parameters:
-      </p>
-      <ul>
-        <li>
-          A <SectionLink to="spring-config-type" /> object to setup the initial
-          spring
-        </li>
-        <li>
-          A option object of type <SectionLink to="spring-value-options" />
-        </li>
-      </ul>
-      <p>
-        The resuld of this function is a <SectionLink to="spring-value-type" />{" "}
-        type.
-      </p>
-      <CodeBlock
-        code={`
+        />
+        <SectionTitle title="spring-value" token="export" />
+        <blockquote>
+          The <code>SpringValue</code> constructor is a higher level tool to
+          manage a spring animated value over time.
+        </blockquote>
+        <p>
+          <code>SpringValue</code> is a function that take two optional
+          parameters:
+        </p>
+        <ul>
+          <li>
+            A <SectionLink to="spring-config-type" /> object to setup the
+            initial spring
+          </li>
+          <li>
+            A option object of type <SectionLink to="spring-value-options" />
+          </li>
+        </ul>
+        <p>
+          The resuld of this function is a{" "}
+          <SectionLink to="spring-value-type" /> type.
+        </p>
+        <CodeBlock
+          code={`
           const value = SpringValue(initialSpringConfig, options);
         `}
-      />
-      {/* TODO: Codesandbox link ! */}
-      <SectionTitle title="spring-value-options" token="type" />
-      <p>
-        The <code>SpringValueOptions</code> type is used to create a{" "}
-        <SectionLink to="spring-value" />.
-      </p>
-      <CodeBlock
-        code={`
+        />
+        {/* TODO: Codesandbox link ! */}
+        <SectionTitle title="spring-value-options" token="type" />
+        <p>
+          The <code>SpringValueOptions</code> type is used to create a{" "}
+          <SectionLink to="spring-value" />.
+        </p>
+        <CodeBlock
+          code={`
           export interface SpringValueOptions {
             velocityThreshold: number; // (default: 0.01)
             positionThreshold: number; // (default: 0.001)
@@ -297,10 +303,10 @@ export default function Api(): JSX.Element {
             now: () => number;
           }
         `}
-      />
-      <SectionTitle title="spring-value-type" token="type" />
-      <CodeBlock
-        code={`
+        />
+        <SectionTitle title="spring-value-type" token="type" />
+        <CodeBlock
+          code={`
           export interface SpringValue {
             // get the current position
             position: () => number;
@@ -320,8 +326,19 @@ export default function Api(): JSX.Element {
             replace: (config: Partial<SpringConfig>) => void;
           }
         `}
-      />
-      <SpringValueDemo />
-    </MainLayout>
+        />
+        <h3>SpringValue example</h3>
+        <p>
+          Here is a simple example where we update the <code>equilibrium</code>{" "}
+          of a <code>SpringValue</code> be to the same as the <code>x</code>{" "}
+          position of the mouse.
+        </p>
+        <p>
+          This <code>SpringValue</code> is then used to animate the{" "}
+          <code>x</code> position of the red ball.
+        </p>
+        <SpringValueDemo />
+      </MainLayout>
+    </React.Fragment>
   );
 }

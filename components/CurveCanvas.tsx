@@ -123,7 +123,7 @@ export const CurveCanvas: React.FC<Props> = ({
         },
       };
     },
-    [position, duration, yMax, yMin]
+    [position, duration, yMax, yMin, equilibrium]
   );
 
   return (
