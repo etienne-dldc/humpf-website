@@ -208,7 +208,7 @@ export default function Article(): JSX.Element {
         <p>Now let's combine the two !</p>
         <h3>Angular Frequency & Damping Ratio</h3>
         <Config showCode={false} />
-        <h2>Smooth transitions with Velocity</h2>
+        <h2>Updating a Spring</h2>
         <p>
           So far we have seen how a damped spring motion can be used to animate
           a nice realistic motion but in real cases motions are rarely just from
@@ -239,9 +239,20 @@ export default function Article(): JSX.Element {
         </p>
         <p>
           We can fix this by using the current position of the spring when the
-          use clicks:
+          user clicks:
         </p>
         <MenuShowHideKeepPos />
+        <CodeBlock
+          code={`
+            // when the user click on the button
+            // we update the equilibrium but keep the current position
+            spring = Spring({
+              timeStart: Date.now(),
+              position: spring(Date.now()).pos,
+              equilibrium: menuHiddenOffset
+            });
+          `}
+        />
         <p>
           <a
             href="https://codesandbox.io/s/menu-basic-anim-keep-pos-uwyws?file=/src/index.js"
@@ -251,6 +262,7 @@ export default function Article(): JSX.Element {
             Open in CodeSandbox
           </a>
         </p>
+        <h2>Smooth transitions with velocity</h2>
       </MainLayout>
     </React.Fragment>
   );

@@ -8,7 +8,7 @@ export const MenuShowHideNoAnim: React.FC = () => {
   const width = useElementSize(divRef).width;
   const [visible, setVisible] = useState(false);
 
-  const height = width * 0.5;
+  const height = width * 0.3;
   const menuWidth = width * 0.3;
 
   return (
@@ -29,7 +29,7 @@ export const MenuShowHideNoAnim: React.FC = () => {
             background: "#CFD8DC",
             transform: visible
               ? "translateX(0)"
-              : `translateX(-${menuWidth + 20}px)`,
+              : `translateX(-${menuWidth + 30}px)`,
           }}
         />
         <div

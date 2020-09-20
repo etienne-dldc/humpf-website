@@ -9,9 +9,11 @@ export const MenuShowHideKeepPos: React.FC = () => {
   const menuRef = useRef<HTMLDivElement | null>(null);
   const width = useElementSize(divRef).width;
   const [visible, setVisible] = useState(false);
-  const height = width * 0.5;
+
+  const height = width * 0.3;
   const menuWidth = width * 0.3;
-  const hiddenTranslate = -(menuWidth + 20);
+
+  const hiddenTranslate = -(menuWidth + 30);
 
   const rafRef = useRef<number | null>(null);
   const springValueRef = useRef<SpringValue>();
@@ -20,7 +22,7 @@ export const MenuShowHideKeepPos: React.FC = () => {
     const width = getSize(divRef.current).width;
     console.log({ width });
     const menuWidth = width * 0.3;
-    const hiddenTranslate = -(menuWidth + 20);
+    const hiddenTranslate = -(menuWidth + 30);
     if (menuRef.current) {
       menuRef.current.style.transform = `translate(${hiddenTranslate}px)`;
     }
