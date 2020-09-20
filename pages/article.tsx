@@ -10,6 +10,9 @@ import { DampingRatioToOne } from "../canvas/DampingRatioToOne";
 import { AngularFrequency } from "../canvas/AngularFrequency";
 import { Config } from "../canvas/Config";
 import Head from "next/head";
+import { MenuShowHideNoAnim } from "../components/MenuShowHideNoAnim";
+import { MenuShowHideBasicAnim } from "../components/MenuShowHideBasicAnim";
+import { MenuShowHideKeepPos } from "../components/MenuShowHideKeepPos";
 
 export default function Article(): JSX.Element {
   return (
@@ -205,6 +208,49 @@ export default function Article(): JSX.Element {
         <p>Now let's combine the two !</p>
         <h3>Angular Frequency & Damping Ratio</h3>
         <Config showCode={false} />
+        <h2>Smooth transitions with Velocity</h2>
+        <p>
+          So far we have seen how a damped spring motion can be used to animate
+          a nice realistic motion but in real cases motions are rarely just from
+          A to B.
+        </p>
+        <p>
+          Take the example of a menu the user can show / hide with a button.
+        </p>
+        <MenuShowHideNoAnim />
+        <p>
+          Let's animate this using a spring ! When it's closed we animate from
+          closed to open, when it's open we animate from open to close.
+        </p>
+        <MenuShowHideBasicAnim />
+        <p>
+          <a
+            href="https://codesandbox.io/s/menu-basic-anim-y9oyv?file=/src/index.js"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Open in CodeSandbox
+          </a>
+        </p>
+        <p>
+          Now if you try to click multple time on the button you will see a
+          problem: we did not handle the case where the user click while the
+          menu is moving.
+        </p>
+        <p>
+          We can fix this by using the current position of the spring when the
+          use clicks:
+        </p>
+        <MenuShowHideKeepPos />
+        <p>
+          <a
+            href="https://codesandbox.io/s/menu-basic-anim-keep-pos-uwyws?file=/src/index.js"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Open in CodeSandbox
+          </a>
+        </p>
       </MainLayout>
     </React.Fragment>
   );

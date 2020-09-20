@@ -1,7 +1,7 @@
-import { useState, useCallback } from 'react';
-import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
+import { useState, useCallback } from "react";
+import { useIsomorphicLayoutEffect } from "./useIsomorphicLayoutEffect";
 
-function getSize(el: HTMLElement | null | undefined) {
+export function getSize(el: HTMLElement | null | undefined): Size {
   if (!el) {
     return {
       width: 0,
@@ -20,7 +20,9 @@ interface Size {
   height: number;
 }
 
-export function useElementSize(ref: React.MutableRefObject<HTMLElement | undefined | null>): Size {
+export function useElementSize(
+  ref: React.MutableRefObject<HTMLElement | undefined | null>
+): Size {
   const [ComponentSize, setComponentSize] = useState(getSize(ref.current));
 
   const handleResize = useCallback(() => {
@@ -34,9 +36,9 @@ export function useElementSize(ref: React.MutableRefObject<HTMLElement | undefin
       return;
     }
     handleResize();
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, [handleResize, ref]);
 

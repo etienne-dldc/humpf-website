@@ -280,7 +280,7 @@ export default function Api(): JSX.Element {
           </li>
         </ul>
         <p>
-          The resuld of this function is a{" "}
+          The result of this function is a{" "}
           <SectionLink to="spring-value-type" /> type.
         </p>
         <CodeBlock
@@ -288,7 +288,6 @@ export default function Api(): JSX.Element {
           const value = SpringValue(initialSpringConfig, options);
         `}
         />
-        {/* TODO: Codesandbox link ! */}
         <SectionTitle title="spring-value-options" token="type" />
         <p>
           The <code>SpringValueOptions</code> type is used to create a{" "}
@@ -330,7 +329,7 @@ export default function Api(): JSX.Element {
         <h3>SpringValue example</h3>
         <p>
           Here is a simple example where we update the <code>equilibrium</code>{" "}
-          of a <code>SpringValue</code> be to the same as the <code>x</code>{" "}
+          of a <code>SpringValue</code> to be the same as the <code>x</code>{" "}
           position of the mouse.
         </p>
         <p>
