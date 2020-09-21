@@ -4,7 +4,7 @@ import { MenuIcon } from "./MenuIcon";
 import { XIcon } from "./XIcon";
 import { SpringValue } from "humpf";
 
-export const MenuShowHideKeepPos: React.FC = () => {
+export const MenuAnimKeepPos: React.FC = () => {
   const divRef = useRef<HTMLDivElement | null>(null);
   const menuRef = useRef<HTMLDivElement | null>(null);
   const width = useElementSize(divRef).width;
@@ -20,7 +20,6 @@ export const MenuShowHideKeepPos: React.FC = () => {
 
   useEffect(() => {
     const width = getSize(divRef.current).width;
-    console.log({ width });
     const menuWidth = width * 0.3;
     const hiddenTranslate = -(menuWidth + 30);
     if (menuRef.current) {

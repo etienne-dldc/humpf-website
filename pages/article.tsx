@@ -10,9 +10,11 @@ import { DampingRatioToOne } from "../canvas/DampingRatioToOne";
 import { AngularFrequency } from "../canvas/AngularFrequency";
 import { Config } from "../canvas/Config";
 import Head from "next/head";
-import { MenuShowHideNoAnim } from "../components/MenuShowHideNoAnim";
-import { MenuShowHideBasicAnim } from "../components/MenuShowHideBasicAnim";
-import { MenuShowHideKeepPos } from "../components/MenuShowHideKeepPos";
+import { MenuNoAnim } from "../components/MenuNoAnim";
+import { MenuAnimBasic } from "../components/MenuAnimBasic";
+import { MenuAnimKeepPos } from "../components/MenuAnimKeepPos";
+import { FollowMouseNoVelocity } from "../canvas/FollowMouseNoVelocity";
+import { FollowMouseSmooth } from "../canvas/FollowMouseSmooth";
 
 export default function Article(): JSX.Element {
   return (
@@ -217,12 +219,12 @@ export default function Article(): JSX.Element {
         <p>
           Take the example of a menu the user can show / hide with a button.
         </p>
-        <MenuShowHideNoAnim />
+        <MenuNoAnim />
         <p>
           Let's animate this using a spring ! When it's closed we animate from
           closed to open, when it's open we animate from open to close.
         </p>
-        <MenuShowHideBasicAnim />
+        <MenuAnimBasic />
         <p>
           <a
             href="https://codesandbox.io/s/menu-basic-anim-y9oyv?file=/src/index.js"
@@ -241,7 +243,7 @@ export default function Article(): JSX.Element {
           We can fix this by using the current position of the spring when the
           user clicks:
         </p>
-        <MenuShowHideKeepPos />
+        <MenuAnimKeepPos />
         <CodeBlock
           code={`
             // when the user click on the button
@@ -263,6 +265,8 @@ export default function Article(): JSX.Element {
           </a>
         </p>
         <h2>Smooth transitions with velocity</h2>
+        <FollowMouseNoVelocity />
+        <FollowMouseSmooth />
       </MainLayout>
     </React.Fragment>
   );

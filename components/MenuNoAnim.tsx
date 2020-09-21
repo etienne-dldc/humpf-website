@@ -3,7 +3,7 @@ import { useElementSize } from "../hooks/useElementSize";
 import { MenuIcon } from "./MenuIcon";
 import { XIcon } from "./XIcon";
 
-export const MenuShowHideNoAnim: React.FC = () => {
+export const MenuNoAnim: React.FC = () => {
   const divRef = useRef<HTMLDivElement | null>(null);
   const width = useElementSize(divRef).width;
   const [visible, setVisible] = useState(false);
