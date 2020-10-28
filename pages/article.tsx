@@ -235,15 +235,14 @@ export default function Article(): JSX.Element {
           </a>
         </p>
         <p>
-          Now if you try to click multple time on the button you will see a
-          problem: we did not handle the case where the user click while the
-          menu is moving.
+          Now if you try to rapidly click multple time on the button you will
+          see a problem: we did not handle the case where the user click while
+          the menu is moving.
         </p>
         <p>
           We can fix this by using the current position of the spring when the
           user clicks:
         </p>
-        <MenuAnimKeepPos />
         <CodeBlock
           code={`
             // when the user click on the button
@@ -255,6 +254,8 @@ export default function Article(): JSX.Element {
             });
           `}
         />
+        <p>Take a look at the result:</p>
+        <MenuAnimKeepPos />
         <p>
           <a
             href="https://codesandbox.io/s/menu-basic-anim-keep-pos-uwyws?file=/src/index.js"
@@ -265,7 +266,47 @@ export default function Article(): JSX.Element {
           </a>
         </p>
         <h2>Smooth transitions with velocity</h2>
+        <p>
+          There is one last thing we have to take into account when updating a
+          spring: <code>velocity</code> !
+        </p>
+        <p>
+          In the following example, we want the ball to be "attracted" to the
+          cursor. To do so, everytime the cursor moves we update the spring's{" "}
+          <code>equilibrium</code> to be the new position as well as{" "}
+          <code>position</code> to make sure the ball starts from where it is.
+        </p>
         <FollowMouseNoVelocity />
+        <p>
+          At first look it might look like it prefectly work but look what
+          happend when you move the cursor. Do you see how the ball seems to be
+          stuck while the cursor is moving ?
+        </p>
+        <p>
+          This is because everytime we update the spring, we also reset the
+          velocity (the speed) of the ball because the initial velocity of a
+          spring is <code>0</code> by default.
+        </p>
+        <p>
+          But in the real world, the velocity of an object can't suddently go
+          from a value to <code>0</code>
+        </p>
+        <p>
+          To fix this we need to preserve velocity when whe update the spring:
+        </p>
+        <CodeBlock
+          code={`
+            // when the user click on the button
+            // we update the equilibrium but keep the current position and velocity
+            spring = Spring({
+              timeStart: Date.now(),
+              position: spring(Date.now()).pos,
+              velocity: spring(Date.now()).vel,
+              equilibrium: menuHiddenOffset
+            });
+          `}
+        />
+        <p>And here the final result:</p>
         <FollowMouseSmooth />
       </MainLayout>
     </React.Fragment>
