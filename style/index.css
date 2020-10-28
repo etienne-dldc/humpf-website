@@ -267,7 +267,7 @@ blockquote p {
 }
 @media screen and (max-width: 400px) {
   .Content {
-    padding: 0 1rem;
+    padding: 0 0.5rem;
   }
 }
 
