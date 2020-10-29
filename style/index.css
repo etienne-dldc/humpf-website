@@ -143,6 +143,7 @@ blockquote p {
   display: flex;
   flex-direction: row;
   align-items: center;
+  touch-action: pan-y;
 }
 @media screen and (max-width: 500px) {
   .Slider {
@@ -265,7 +266,12 @@ blockquote p {
   padding: 0 2rem;
   margin-bottom: 4rem;
 }
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 550px) {
+  .Content {
+    padding: 0 0.7rem;
+  }
+}
+@media screen and (max-width: 450px) {
   .Content {
     padding: 0 0.5rem;
   }
