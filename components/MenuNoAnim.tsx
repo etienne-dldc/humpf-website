@@ -8,7 +8,7 @@ export const MenuNoAnim: React.FC = () => {
   const width = useElementSize(divRef).width;
   const [visible, setVisible] = useState(false);
 
-  const height = width * 0.3;
+  const height = 200;
   const menuWidth = width * 0.3;
 
   return (

@@ -406,12 +406,24 @@ blockquote p {
     -1rem -1rem 0px 0px #9e907c, -1rem 1rem 0px 0px #9e907c;
   margin: 0;
   background: #352831;
+  touch-action: pan-y;
 }
 
 .PlayCanvas {
   margin-top: 1rem;
   padding: 1rem;
   position: relative;
+}
+
+@media screen and (max-width: 500px) {
+  .PlayCanvas {
+    padding: 0.5rem;
+  }
+
+  .Canvas {
+    box-shadow: 0.5rem 0.5rem 0px 0px #9e907c, 0.5rem -0.5rem 0px 0px #9e907c,
+      -0.5rem -0.5rem 0px 0px #9e907c, -0.5rem 0.5rem 0px 0px #9e907c;
+  }
 }
 
 .PlayCanvas--overlay {
