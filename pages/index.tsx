@@ -9,7 +9,8 @@ export default function Home(): JSX.Element {
   return (
     <MainLayout currentPage="home" key="main">
       <p className="Hero">
-        <em>Position and velocity</em> of a <em>damped spring</em> as a{" "}
+        A <em>TypeScript</em> and <em>JavaScript</em> library to get the{" "}
+        <em>position and velocity</em> of a <em>damped spring</em> as a{" "}
         <em>continuous function of time</em>.
       </p>
       <BasicSpring autoStart={true} loop={true} />
