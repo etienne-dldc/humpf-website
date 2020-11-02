@@ -25,9 +25,9 @@ export default function Article(): JSX.Element {
       <MainLayout currentPage="article" key="main">
         <h1>Using Damped Springs for animations</h1>
         <p className="Hero">
-          <em>Humpf</em> is a library that let get the{" "}
-          <em>position and velocity</em> of a <em>damped spring</em> as a{" "}
-          <em>continuous function of time</em>.
+          <em>Humpf</em> is a <em>TypeScript</em> and <em>JavaScript</em>{" "}
+          library to get the <em>position and velocity</em> of a{" "}
+          <em>damped spring</em> as a <em>continuous function of time</em>.
         </p>
         <blockquote>
           A <i>what</i> of <i>what</i> ?
@@ -41,11 +41,11 @@ export default function Article(): JSX.Element {
           Let's start by the most important part: what is a{" "}
           <em>damped spring</em> ?
         </p>
-        <h2>What is a damped springs ?</h2>
+        <h2>What is a damped spring ?</h2>
         <p>
           A{" "}
           <a href="http://www.ryanjuckett.com/programming/damped-springs/">
-            Damped Springs
+            Damped Spring
           </a>{" "}
           is an equation that simulate the movement of a spring where the
           amplitude of the spring (the bounce) is damped over time.
@@ -235,7 +235,7 @@ export default function Article(): JSX.Element {
           </a>
         </p>
         <p>
-          Now if you try to rapidly click multple time on the button you will
+          Now if you try to rapidly click multiple time on the button you will
           see a problem: we did not handle the case where the user click while
           the menu is moving.
         </p>
