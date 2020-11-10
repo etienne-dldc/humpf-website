@@ -62,7 +62,10 @@ export default class MyApp extends App {
             name="twitter:description"
             content="Humpf is a TypeScript and JavaScript library to get the position and velocity of a damped spring as a continuous function of time"
           />
-          <meta name="twitter:image" content="/twitter-card.png" />
+          <meta
+            name="twitter:image"
+            content="https://humpf.etienne.tech/twitter-card.png"
+          />
 
           <title>Humpf</title>
         </Head>
