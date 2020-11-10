@@ -318,7 +318,7 @@ export default function Article(): JSX.Element {
           Congrats ! You now know how springs works. To go further take a look
           at{" "}
           <Link href="/api-doc">
-            <a className="HomeActions--button">the API</a>
+            <a>the API</a>
           </Link>
           .
         </p>
