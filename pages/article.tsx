@@ -15,6 +15,7 @@ import { MenuAnimBasic } from "../components/MenuAnimBasic";
 import { MenuAnimKeepPos } from "../components/MenuAnimKeepPos";
 import { FollowMouseNoVelocity } from "../canvas/FollowMouseNoVelocity";
 import { FollowMouseSmooth } from "../canvas/FollowMouseSmooth";
+import Link from "next/link";
 
 export default function Article(): JSX.Element {
   return (
@@ -312,6 +313,15 @@ export default function Article(): JSX.Element {
         />
         <p>And here the final result:</p>
         <FollowMouseSmooth />
+        <h2>That's it</h2>
+        <p>
+          Congrats ! You now know how springs works. To go further take a look
+          at{" "}
+          <Link href="/api-doc">
+            <a className="HomeActions--button">the API</a>
+          </Link>
+          .
+        </p>
       </MainLayout>
     </React.Fragment>
   );
