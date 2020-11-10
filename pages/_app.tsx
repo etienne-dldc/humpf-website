@@ -51,6 +51,19 @@ export default class MyApp extends App {
           <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
           <meta name="msapplication-TileColor" content="#9f00a7" />
           <meta name="theme-color" content="#ffffff" />
+
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:site" content="@Etienne_dot_js" />
+          <meta
+            name="twitter:title"
+            content="Humpf - Using Damped Springs for animations"
+          />
+          <meta
+            name="twitter:description"
+            content="Humpf is a TypeScript and JavaScript library to get the position and velocity of a damped spring as a continuous function of time"
+          />
+          <meta name="twitter:image" content="/twitter-card.png" />
+
           <title>Humpf</title>
         </Head>
         {/* <Head>

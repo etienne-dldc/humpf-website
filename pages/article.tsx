@@ -20,7 +20,11 @@ export default function Article(): JSX.Element {
   return (
     <React.Fragment>
       <Head>
-        <title>Humpf - Article</title>
+        <title>Humpf - Using Damped Springs for animations</title>
+        <meta
+          name="twitter:title"
+          content="Humpf - Using Damped Springs for animations"
+        />
       </Head>
       <MainLayout currentPage="article" key="main">
         <h1>Using Damped Springs for animations</h1>
