@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useRef, useEffect } from "react";
+import { useCallback, useState, useRef, useEffect } from "react";
 import { InitCanvas, Canvas } from "./Canvas";
 import { getFrameData } from "framesync";
 import { PlayIcon } from "./PlayIcon";
@@ -31,7 +31,7 @@ type PlayState =
   | { status: "paused"; pausedAfter: number }
   | { status: "done"; doneAfter: number };
 
-export const PlayCanvas: React.FC<Props> = ({
+export function PlayCanvas({
   ratio = 16 / 9,
   init,
   loop = false,
@@ -41,7 +41,7 @@ export const PlayCanvas: React.FC<Props> = ({
   previewTime = 0,
   renderWhilePaused = true,
   restartOnChangeDebounce = false as const,
-}) => {
+}: Props): JSX.Element {
   const divRef = useRef<HTMLDivElement>(null);
   const width = useElementSize(divRef).width;
 
@@ -248,4 +248,4 @@ export const PlayCanvas: React.FC<Props> = ({
       </div>
     </div>
   );
-};
+}

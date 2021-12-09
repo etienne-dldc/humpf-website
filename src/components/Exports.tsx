@@ -1,10 +1,12 @@
-import React from "react";
 import Link from "next/link";
 import { API_ANCHORS } from "../utils/contants";
 
-const SectionLink: React.FC<{
+type Props = {
+  children: React.ReactNode;
   to: keyof typeof API_ANCHORS;
-}> = ({ to, children }) => {
+};
+
+function SectionLink({ to, children }: Props): JSX.Element {
   const link = (
     <Link href={"#" + to}>
       <a>{children || API_ANCHORS[to]}</a>
@@ -12,9 +14,9 @@ const SectionLink: React.FC<{
   );
 
   return link;
-};
+}
 
-export const Exports: React.FC = () => {
+export const Exports = () => {
   return (
     <pre
       className="prism-code language-tsx CodeBlock"

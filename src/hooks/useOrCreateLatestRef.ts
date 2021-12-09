@@ -1,4 +1,4 @@
-import { MutableRefObject, useRef } from 'react';
+import { MutableRefObject, useRef } from "react";
 
 export function useOrCreateLatestRef<T>(
   ref: MutableRefObject<T> | undefined | null,

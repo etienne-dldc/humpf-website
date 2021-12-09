@@ -1,9 +1,9 @@
-import React, { useMemo, useCallback, useState } from "react";
+import { useMemo, useCallback, useState } from "react";
 import { CurveCanvas } from "../components/CurveCanvas";
 import { Spring, SpringConfig } from "humpf";
 import { CodeBlock } from "../components/CodeBlock";
 
-export const DecayAngularFreq: React.FC = () => {
+export const DecayAngularFreq = () => {
   const [velocity, setVelocity] = useState<number>(50);
   const [angularFreq, setAngularFreq] = useState<number>(1);
 

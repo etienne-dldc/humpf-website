@@ -2,7 +2,7 @@ interface Props {
   size?: number;
 }
 
-export const AwardIcon: React.FC<Props> = ({ size = 24 }) => {
+export function AwardIcon({ size = 24 }: Props): JSX.Element {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20,4 +20,4 @@ export const AwardIcon: React.FC<Props> = ({ size = 24 }) => {
       <path d="M8.21 13.89L7 23 12 20 17 23 15.79 13.88"></path>
     </svg>
   );
-};
+}

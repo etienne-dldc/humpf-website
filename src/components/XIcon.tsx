@@ -1,10 +1,8 @@
-import React from "react";
-
 interface Props {
   size?: number;
 }
 
-export const XIcon: React.FC<Props> = ({ size = 24 }) => {
+export function XIcon({ size = 24 }: Props): JSX.Element {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22,4 +20,4 @@ export const XIcon: React.FC<Props> = ({ size = 24 }) => {
       <path d="M6 6L18 18" />
     </svg>
   );
-};
+}

@@ -1,16 +1,16 @@
-import React from "react";
 import Link from "next/link";
 
 interface Props {
+  children?: React.ReactNode;
   token?: null | "type" | "export";
   id: string;
 }
 
-export const ApiSectionTitle: React.FC<Props> = ({
+export function ApiSectionTitle({
   children,
   token = null,
   id,
-}) => {
+}: Props): JSX.Element {
   return (
     <h2 id={id}>
       <Link href={"#" + id}>
@@ -26,4 +26,4 @@ export const ApiSectionTitle: React.FC<Props> = ({
       )}
     </h2>
   );
-};
+}

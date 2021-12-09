@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback } from "react";
+import { useMemo, useCallback } from "react";
 import { CurveCanvas } from "../components/CurveCanvas";
 import { Spring } from "humpf";
 
@@ -7,10 +7,10 @@ interface Props {
   loop?: boolean;
 }
 
-export const BasicSpring: React.FC<Props> = ({
+export function BasicSpring({
   autoStart = false,
   loop = false,
-}) => {
+}: Props): JSX.Element {
   const spring = useMemo(
     () =>
       Spring({
@@ -35,4 +35,4 @@ export const BasicSpring: React.FC<Props> = ({
       ratio={2 / 1}
     />
   );
-};
+}

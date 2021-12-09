@@ -1,4 +1,5 @@
-import React from "react";
+import Link from "next/link";
+import { Fragment } from "react";
 import { MainLayout } from "../components/MainLayout";
 import { CodeBlock } from "../components/CodeBlock";
 import { BasicSpring } from "../canvas/BasicSpring";
@@ -15,11 +16,10 @@ import { MenuAnimBasic } from "../components/MenuAnimBasic";
 import { MenuAnimKeepPos } from "../components/MenuAnimKeepPos";
 import { FollowMouseNoVelocity } from "../canvas/FollowMouseNoVelocity";
 import { FollowMouseSmooth } from "../canvas/FollowMouseSmooth";
-import Link from "next/link";
 
 export default function Article(): JSX.Element {
   return (
-    <React.Fragment>
+    <Fragment>
       <Head>
         <title>Humpf - Using Damped Springs for animations</title>
         <meta
@@ -325,6 +325,6 @@ export default function Article(): JSX.Element {
           .
         </p>
       </MainLayout>
-    </React.Fragment>
+    </Fragment>
   );
 }

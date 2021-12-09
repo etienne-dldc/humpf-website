@@ -1,5 +1,3 @@
-import React from "react";
-
 interface Props {
   value: number;
   onChange: (value: number) => void;
@@ -10,7 +8,7 @@ interface Props {
   format?: (num: number) => string;
 }
 
-export const Slider: React.FC<Props> = ({
+export function Slider({
   value,
   onChange,
   title,
@@ -18,7 +16,7 @@ export const Slider: React.FC<Props> = ({
   max = 100,
   step = 1,
   format = (v) => v.toString(),
-}) => {
+}: Props): JSX.Element {
   return (
     <div className="Slider">
       <p className="Slider--name">
@@ -35,4 +33,4 @@ export const Slider: React.FC<Props> = ({
       />
     </div>
   );
-};
+}

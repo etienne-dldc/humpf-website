@@ -1,9 +1,9 @@
-import React, { useMemo, useCallback, useState } from "react";
+import { useMemo, useCallback, useState } from "react";
 import { CurveCanvas } from "../components/CurveCanvas";
 import { Spring } from "humpf";
 import { Slider } from "../components/Slider";
 
-export const AngularFrequency: React.FC = () => {
+export function AngularFrequency(): JSX.Element {
   const [angularFrequency, setAngularFrequency] = useState(1);
 
   const spring = useMemo(
@@ -44,4 +44,4 @@ export const AngularFrequency: React.FC = () => {
       />
     </div>
   );
-};
+}

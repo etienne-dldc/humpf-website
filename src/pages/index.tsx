@@ -1,4 +1,3 @@
-import React from "react";
 import { MainLayout } from "../components/MainLayout";
 import { BasicSpring } from "../canvas/BasicSpring";
 // import { Config } from "../canvas/Config";

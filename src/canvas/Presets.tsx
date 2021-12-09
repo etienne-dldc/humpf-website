@@ -1,11 +1,11 @@
-import React, { useMemo, useCallback, useState } from "react";
+import { useMemo, useCallback, useState } from "react";
 import { CurveCanvas } from "../components/CurveCanvas";
 import { Spring, SpringConfig } from "humpf";
 import { CodeBlock } from "../components/CodeBlock";
 
 type Preset = "basic" | "gentle" | "wobbly" | "stiff" | "slow";
 
-export const Presets: React.FC = () => {
+export function Presets(): JSX.Element {
   const [preset, setPreset] = useState<Preset>("basic");
 
   const spring = useMemo(() => Spring(SpringConfig[preset]()), [preset]);
@@ -67,4 +67,4 @@ export const Presets: React.FC = () => {
       />
     </div>
   );
-};
+}

@@ -1,9 +1,9 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useElementSize } from "../hooks/useElementSize";
 import { MenuIcon } from "./MenuIcon";
 import { XIcon } from "./XIcon";
 
-export const MenuNoAnim: React.FC = () => {
+export const MenuNoAnim = () => {
   const divRef = useRef<HTMLDivElement | null>(null);
   const width = useElementSize(divRef).width;
   const [visible, setVisible] = useState(false);

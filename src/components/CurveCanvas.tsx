@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import { useCallback } from "react";
 import { PlayCanvas, InitPlayCanvas } from "./PlayCanvas";
 import { Curve, CurvePoint, map, horizontalLine, withContext } from "../utils";
 
@@ -17,7 +17,7 @@ interface Props {
   equilibrium?: number;
 }
 
-export const CurveCanvas: React.FC<Props> = ({
+export function CurveCanvas({
   position,
   loop,
   duration = 1000,
@@ -30,7 +30,7 @@ export const CurveCanvas: React.FC<Props> = ({
   previewTime,
   ratio,
   equilibrium,
-}) => {
+}: Props): JSX.Element {
   const init = useCallback<InitPlayCanvas>(
     (ctx) => {
       const curve = Curve(ctx, position, {
@@ -140,4 +140,4 @@ export const CurveCanvas: React.FC<Props> = ({
       }}
     />
   );
-};
+}

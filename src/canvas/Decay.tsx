@@ -1,16 +1,17 @@
-import React, { useMemo, useCallback, useState } from "react";
+import { useMemo, useCallback, useState } from "react";
 import { CurveCanvas } from "../components/CurveCanvas";
 import { Spring, SpringConfig } from "humpf";
 import { CodeBlock } from "../components/CodeBlock";
 
 type Preset = "basic" | "gentle" | "wobbly" | "stiff" | "slow";
 
-export const Decay: React.FC = () => {
+export const Decay = () => {
   const [velocity, setVelocity] = useState<number>(50);
 
-  const spring = useMemo(() => Spring(SpringConfig.decay({ velocity })), [
-    velocity,
-  ]);
+  const spring = useMemo(
+    () => Spring(SpringConfig.decay({ velocity })),
+    [velocity]
+  );
 
   const position = useCallback((x) => spring(x).pos, [spring]);
 

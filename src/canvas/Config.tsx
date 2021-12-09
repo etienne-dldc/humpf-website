@@ -1,12 +1,12 @@
-import React, { useMemo, useCallback, useState } from "react";
+import { useMemo, useCallback, useState } from "react";
 import { CurveCanvas } from "../components/CurveCanvas";
 import { Spring } from "humpf";
 import { CodeBlock } from "../components/CodeBlock";
 import { Slider } from "../components/Slider";
 
-export const Config: React.FC<{ showCode?: boolean }> = ({
-  showCode = true,
-}) => {
+type Props = { showCode?: boolean };
+
+export function Config({ showCode = true }: Props): JSX.Element {
   const [angularFreq, setAngularFreq] = useState<number>(1);
   const [dampingRatio, setDampingRatio] = useState<number>(1);
 
@@ -62,4 +62,4 @@ export const Config: React.FC<{ showCode?: boolean }> = ({
       />
     </div>
   );
-};
+}

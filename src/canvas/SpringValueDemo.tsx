@@ -1,9 +1,9 @@
-import React, { useCallback, useRef } from "react";
+import { useCallback, useRef } from "react";
 import { InitCanvas, Canvas } from "../components/Canvas";
 import { SpringValue, SpringConfig } from "humpf";
 import { CodeBlock } from "../components/CodeBlock";
 
-export const SpringValueDemo: React.FC = () => {
+export function SpringValueDemo(): JSX.Element {
   const divRef = useRef<HTMLDivElement>(null);
 
   const canvasInit = useCallback<InitCanvas>((ctx, data) => {
@@ -88,4 +88,4 @@ export const SpringValueDemo: React.FC = () => {
       </a>
     </div>
   );
-};
+}

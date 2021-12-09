@@ -1,9 +1,9 @@
-import React, { useMemo, useCallback, useState } from "react";
+import { useMemo, useCallback, useState } from "react";
 import { CurveCanvas } from "../components/CurveCanvas";
 import { Spring } from "humpf";
 import { Slider } from "../components/Slider";
 
-export const DampingRatioToOne: React.FC = () => {
+export const DampingRatioToOne = () => {
   const [dampingRatio, setDampingRatio] = useState(0.2);
 
   const spring = useMemo(

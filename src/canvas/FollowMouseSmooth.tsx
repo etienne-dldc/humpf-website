@@ -1,8 +1,8 @@
-import React, { useCallback, useRef } from "react";
+import { useCallback, useRef } from "react";
 import { InitCanvas, Canvas } from "../components/Canvas";
 import { SpringValue, SpringConfig } from "humpf";
 
-export const FollowMouseSmooth: React.FC = () => {
+export const FollowMouseSmooth = () => {
   const divRef = useRef<HTMLDivElement>(null);
 
   const canvasInit = useCallback<InitCanvas>((ctx, data) => {

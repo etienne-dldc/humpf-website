@@ -1,10 +1,8 @@
-import React from 'react';
-
 interface Props {
   className?: string;
 }
 
-export const Logo: React.FC<Props> = ({ className }) => {
+export function Logo({ className }: Props): JSX.Element {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21,7 +19,11 @@ export const Logo: React.FC<Props> = ({ className }) => {
           y="-9%"
           filterUnits="objectBoundingBox"
         >
-          <feOffset dy="13" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+          <feOffset
+            dy="13"
+            in="SourceAlpha"
+            result="shadowOffsetOuter1"
+          ></feOffset>
           <feGaussianBlur
             in="shadowOffsetOuter1"
             result="shadowBlurOuter1"
@@ -45,7 +47,11 @@ export const Logo: React.FC<Props> = ({ className }) => {
             result="shadowBlurInner1"
             stdDeviation="4.5"
           ></feGaussianBlur>
-          <feOffset dy="4" in="shadowBlurInner1" result="shadowOffsetInner1"></feOffset>
+          <feOffset
+            dy="4"
+            in="shadowBlurInner1"
+            result="shadowOffsetInner1"
+          ></feOffset>
           <feComposite
             in="shadowOffsetInner1"
             in2="SourceAlpha"
@@ -116,4 +122,4 @@ export const Logo: React.FC<Props> = ({ className }) => {
       </g>
     </svg>
   );
-};
+}

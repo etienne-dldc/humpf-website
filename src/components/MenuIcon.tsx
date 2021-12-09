@@ -1,10 +1,8 @@
-import React from "react";
-
 interface Props {
   size?: number;
 }
 
-export const MenuIcon: React.FC<Props> = ({ size = 24 }) => {
+export function MenuIcon({ size = 24 }: Props): JSX.Element {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,4 +21,4 @@ export const MenuIcon: React.FC<Props> = ({ size = 24 }) => {
       <path d="M3 18L21 18" />
     </svg>
   );
-};
+}

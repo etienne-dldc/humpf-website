@@ -1,9 +1,9 @@
-import React, { useMemo } from 'react';
-import { useElementSize } from '../hooks/useElementSize';
-import { useRef, useEffect } from 'react';
-import sync, { cancelSync, getFrameData } from 'framesync';
-import { useLatedtRef } from '../hooks/useLatedtRef';
-import { useOrCreateRef } from '../hooks/useOrCreateRef';
+import { useMemo } from "react";
+import { useElementSize } from "../hooks/useElementSize";
+import { useRef, useEffect } from "react";
+import sync, { cancelSync, getFrameData } from "framesync";
+import { useLatedtRef } from "../hooks/useLatedtRef";
+import { useOrCreateRef } from "../hooks/useOrCreateRef";
 
 interface DrawData {
   ts: number;
@@ -34,7 +34,11 @@ interface Props {
   containerRef?: React.MutableRefObject<HTMLDivElement | null>;
 }
 
-export const Canvas: React.FC<Props> = ({ ratio = 16 / 9, init, containerRef }) => {
+export function Canvas({
+  ratio = 16 / 9,
+  init,
+  containerRef,
+}: Props): JSX.Element {
   const divRef = useOrCreateRef<HTMLDivElement | null>(containerRef, null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -50,7 +54,7 @@ export const Canvas: React.FC<Props> = ({ ratio = 16 / 9, init, containerRef }) 
     if (!canvasEl) {
       return;
     }
-    const ctx = canvasEl.getContext('2d');
+    const ctx = canvasEl.getContext("2d");
     if (!ctx) {
       return;
     }
@@ -88,4 +92,4 @@ export const Canvas: React.FC<Props> = ({ ratio = 16 / 9, init, containerRef }) 
       <canvas ref={canvasRef}></canvas>
     </div>
   );
-};
+}

@@ -1,4 +1,3 @@
-import React from "react";
 import Link from "next/link";
 import { useWindowSize } from "../hooks/useWindowSize";
 import { GithubIcon } from "./GithubIcon";
@@ -9,7 +8,7 @@ interface Props {
   currentPage: "home" | "api" | "article";
 }
 
-export const Nav: React.FC<Props> = ({ currentPage }) => {
+export function Nav({ currentPage }: Props): JSX.Element {
   const size = useWindowSize();
 
   const showIconsVersion = size.width < 500;
@@ -60,4 +59,4 @@ export const Nav: React.FC<Props> = ({ currentPage }) => {
       <div className="Nav--hr" />
     </nav>
   );
-};
+}

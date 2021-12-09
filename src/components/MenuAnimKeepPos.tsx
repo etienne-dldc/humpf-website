@@ -1,10 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { getSize, useElementSize } from "../hooks/useElementSize";
 import { MenuIcon } from "./MenuIcon";
 import { XIcon } from "./XIcon";
 import { SpringValue } from "humpf";
 
-export const MenuAnimKeepPos: React.FC = () => {
+export const MenuAnimKeepPos = () => {
   const divRef = useRef<HTMLDivElement | null>(null);
   const menuRef = useRef<HTMLDivElement | null>(null);
   const width = useElementSize(divRef).width;

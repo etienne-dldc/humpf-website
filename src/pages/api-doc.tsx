@@ -1,4 +1,3 @@
-import React from "react";
 import { MainLayout } from "../components/MainLayout";
 import { CodeBlock } from "../components/CodeBlock";
 import { ApiSectionTitle } from "../components/ApiSectionTitle";
@@ -10,11 +9,14 @@ import { Exports } from "../components/Exports";
 import { API_ANCHORS } from "../utils/contants";
 import { SpringValueDemo } from "../canvas/SpringValueDemo";
 import Head from "next/head";
+import { Fragment } from "react";
 
-const SectionLink: React.FC<{
+type SectionLinkProps = {
   to: keyof typeof API_ANCHORS;
   code?: boolean;
-}> = ({ to, code = true }) => {
+};
+
+function SectionLink({ to, code = true }: SectionLinkProps): JSX.Element {
   const link = (
     <Link href={"#" + to}>
       <a>{API_ANCHORS[to]}</a>
@@ -26,22 +28,24 @@ const SectionLink: React.FC<{
   }
 
   return <code>{link}</code>;
-};
+}
 
-const SectionTitle: React.FC<{
+type SectionTitleProps = {
   title: keyof typeof API_ANCHORS;
   token?: null | "type" | "export";
-}> = ({ title, token }) => {
+};
+
+function SectionTitle({ title, token }: SectionTitleProps): JSX.Element {
   return (
     <ApiSectionTitle id={title} token={token}>
       {API_ANCHORS[title]}
     </ApiSectionTitle>
   );
-};
+}
 
 export default function Api(): JSX.Element {
   return (
-    <React.Fragment>
+    <Fragment>
       <Head>
         <title>Humpf - API</title>
       </Head>
@@ -338,6 +342,6 @@ export default function Api(): JSX.Element {
         </p>
         <SpringValueDemo />
       </MainLayout>
-    </React.Fragment>
+    </Fragment>
   );
 }

@@ -1,4 +1,3 @@
-import React from "react";
 import Highlight, { defaultProps, Language } from "prism-react-renderer";
 import theme from "prism-react-renderer/themes/nightOwl";
 
@@ -7,7 +6,7 @@ interface Props {
   code: string;
 }
 
-export const CodeBlock: React.FC<Props> = ({ code, language = "tsx" }) => {
+export function CodeBlock({ code, language = "tsx" }: Props): JSX.Element {
   const cleanCode = cleanupCode(code);
 
   return (
@@ -32,7 +31,7 @@ export const CodeBlock: React.FC<Props> = ({ code, language = "tsx" }) => {
       )}
     </Highlight>
   );
-};
+}
 
 const tabsAtStart = /^( *)/g;
 

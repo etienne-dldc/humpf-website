@@ -1,8 +1,8 @@
-import React, { useCallback } from 'react';
-import { PlayCanvas, InitPlayCanvas } from '../components/PlayCanvas';
-import { map } from '../utils';
+import { useCallback } from "react";
+import { PlayCanvas, InitPlayCanvas } from "../components/PlayCanvas";
+import { map } from "../utils";
 
-export const StepByStepLinear: React.FC = () => {
+export function StepByStepLinear(): JSX.Element {
   const init = useCallback<InitPlayCanvas>((ctx) => {
     const duration = 2000;
 
@@ -22,7 +22,7 @@ export const StepByStepLinear: React.FC = () => {
         const ballSize = width * 0.05;
 
         ctx.clearRect(0, 0, width, height);
-        ctx.fillStyle = '#352730';
+        ctx.fillStyle = "#352730";
         ctx.fillRect(0, 0, width, height);
 
         const padding = height * 0.1;
@@ -36,7 +36,7 @@ export const StepByStepLinear: React.FC = () => {
         const y = graphHeight / 2;
         ctx.beginPath();
         ctx.arc(x, y, ballSize, 0, 2 * Math.PI);
-        ctx.fillStyle = '#E53935';
+        ctx.fillStyle = "#E53935";
         ctx.fill();
 
         ctx.restore();
@@ -53,4 +53,4 @@ export const StepByStepLinear: React.FC = () => {
       renderWhilePaused={false}
     />
   );
-};
+}

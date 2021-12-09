@@ -1,12 +1,12 @@
-import React from "react";
 import { Nav } from "./Nav";
 import { Logo } from "./Logo";
 
 interface Props {
+  children: React.ReactNode;
   currentPage: "home" | "api" | "article";
 }
 
-export const MainLayout: React.FC<Props> = ({ children, currentPage }) => {
+export function MainLayout({ children, currentPage }: Props): JSX.Element {
   return (
     <div className="Container">
       <header className="Header">
@@ -22,4 +22,4 @@ export const MainLayout: React.FC<Props> = ({ children, currentPage }) => {
       </footer>
     </div>
   );
-};
+}

@@ -1,7 +1,7 @@
-import React, { useCallback } from "react";
+import { useCallback } from "react";
 import { CurveCanvas } from "../components/CurveCanvas";
 
-export const EasingCurve: React.FC = () => {
+export const EasingCurve = () => {
   const duration = 1500;
 
   const easeInOutCubic = useCallback(

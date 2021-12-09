@@ -1,8 +1,8 @@
-import React, { useMemo, useCallback, useState } from 'react';
-import { CurveCanvas } from '../components/CurveCanvas';
-import { Spring } from 'humpf';
+import { useMemo, useCallback, useState } from "react";
+import { CurveCanvas } from "../components/CurveCanvas";
+import { Spring } from "humpf";
 
-export const DampingRatio: React.FC = () => {
+export function DampingRatio(): JSX.Element {
   const [dampingRatio, setDampingRatio] = useState(0.2);
 
   const spring = useMemo(
@@ -22,21 +22,21 @@ export const DampingRatio: React.FC = () => {
     <div>
       <div className="Buttons">
         <button
-          className={'Button' + (dampingRatio === 0.2 ? ' Button--active' : '')}
+          className={"Button" + (dampingRatio === 0.2 ? " Button--active" : "")}
           onClick={() => setDampingRatio(0.2)}
         >
           Under damped
         </button>
         <div className="Buttons--space" />
         <button
-          className={'Button' + (dampingRatio === 1 ? ' Button--active' : '')}
+          className={"Button" + (dampingRatio === 1 ? " Button--active" : "")}
           onClick={() => setDampingRatio(1)}
         >
           Critacally damped
         </button>
         <div className="Buttons--space" />
         <button
-          className={'Button' + (dampingRatio === 3 ? ' Button--active' : '')}
+          className={"Button" + (dampingRatio === 3 ? " Button--active" : "")}
           onClick={() => setDampingRatio(3)}
         >
           Over damped
@@ -54,4 +54,4 @@ export const DampingRatio: React.FC = () => {
       />
     </div>
   );
-};
+}
