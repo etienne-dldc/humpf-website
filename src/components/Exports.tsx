@@ -71,7 +71,7 @@ export const Exports: React.FC = () => {
         </span>
         <span className="token plain"> </span>
         <span className="token string" style={{ color: "rgb(173, 219, 103)" }}>
-          'humpf'
+          &apos;humpf&apos;
         </span>
         <span
           className="token punctuation"
@@ -165,7 +165,7 @@ export const Exports: React.FC = () => {
         </span>
         <span className="token plain"> </span>
         <span className="token string" style={{ color: "rgb(173, 219, 103)" }}>
-          'humpf'
+          &apos;humpf&apos;
         </span>
         <span
           className="token punctuation"

@@ -43,7 +43,7 @@ export default function Article(): JSX.Element {
           how to use it.
         </p>
         <p>
-          Let's start by the most important part: what is a{" "}
+          Let&apos;s start by the most important part: what is a{" "}
           <em>damped spring</em> ?
         </p>
         <h2>What is a damped spring ?</h2>
@@ -58,8 +58,8 @@ export default function Article(): JSX.Element {
         <p>Here is an example of this movement</p>
         <BasicSpring />
         <p>
-          Before diving into how to configure and use such movement, let's see
-          what a "<em>continuous function of time</em>" means.
+          Before diving into how to configure and use such movement, let&apos;s
+          see what a &quot;<em>continuous function of time</em>&quot; means.
         </p>
         <h2>Step-by-step vs Continuous function of time</h2>
         <p>There are two main ways to animate motion:</p>
@@ -97,11 +97,11 @@ export default function Article(): JSX.Element {
         <StepByStepMove />
         <p>
           This method is used by many frameworks and libraries out there but
-          it's not the method used by <em>Humpf</em>.
+          it&apos;s not the method used by <em>Humpf</em>.
         </p>
         <p>
           With <em>Humpf</em> your motion is represented as a continuous
-          function of time, let's see what it means.
+          function of time, let&apos;s see what it means.
         </p>
         <h2>Continuous function of time</h2>
         <p>
@@ -138,7 +138,7 @@ export default function Article(): JSX.Element {
         <p>
           <a href="https://easings.net">Easing functions</a> are small functions
           that take a parameter <code>t</code> (for time) and return a position.
-          You've probably already seen or even used one like{" "}
+          You&apos;ve probably already seen or even used one like{" "}
           <code>easeOutCubic</code>, <code>easeInOutQuad</code>, or{" "}
           <code>easeOutBounce</code>
         </p>
@@ -164,7 +164,7 @@ export default function Article(): JSX.Element {
         </p>
         <p>
           What if instead of an arbitrary math function we could use a physic
-          based equation to animate our ball ? Well that's where{" "}
+          based equation to animate our ball ? Well that&apos;s where{" "}
           <em>Damped Springs</em> come into play !
         </p>
         <h2>Damped Springs</h2>
@@ -212,7 +212,7 @@ export default function Article(): JSX.Element {
           Note that here, because the <em>damping ratio</em> is <code>0</code>,
           the spring will bounce forever.
         </p>
-        <p>Now let's combine the two !</p>
+        <p>Now let&apos;s combine the two !</p>
         <h3>Angular Frequency & Damping Ratio</h3>
         <Config showCode={false} />
         <h2>Updating a Spring</h2>
@@ -226,8 +226,9 @@ export default function Article(): JSX.Element {
         </p>
         <MenuNoAnim />
         <p>
-          Let's animate this using a spring ! When it's closed we animate from
-          closed to open, when it's open we animate from open to close.
+          Let&apos;s animate this using a spring ! When it&apos;s closed we
+          animate from closed to open, when it&apos;s open we animate from open
+          to close.
         </p>
         <MenuAnimBasic />
         <p>
@@ -276,10 +277,11 @@ export default function Article(): JSX.Element {
           spring: <code>velocity</code> !
         </p>
         <p>
-          In the following example, we want the ball to be "attracted" to the
-          cursor. To do so, everytime the cursor moves we update the spring's{" "}
-          <code>equilibrium</code> to be the new position as well as{" "}
-          <code>position</code> to make sure the ball starts from where it is.
+          In the following example, we want the ball to be &quot;attracted&quot;
+          to the cursor. To do so, everytime the cursor moves we update the
+          spring&apos;s <code>equilibrium</code> to be the new position as well
+          as <code>position</code> to make sure the ball starts from where it
+          is.
         </p>
         <FollowMouseNoVelocity />
         <p>
@@ -293,8 +295,8 @@ export default function Article(): JSX.Element {
           spring is <code>0</code> by default.
         </p>
         <p>
-          But in the real world, the velocity of an object can't suddently go
-          from a value to <code>0</code>
+          But in the real world, the velocity of an object can&apos;t suddently
+          go from a value to <code>0</code>
         </p>
         <p>
           To fix this we need to preserve velocity when whe update the spring:
@@ -313,7 +315,7 @@ export default function Article(): JSX.Element {
         />
         <p>And here the final result:</p>
         <FollowMouseSmooth />
-        <h2>That's it</h2>
+        <h2>That&apos;s it</h2>
         <p>
           Congrats ! You now know how springs works. To go further take a look
           at{" "}

@@ -130,12 +130,12 @@ export default function Api(): JSX.Element {
           and the <code>dampingRatio</code> is <code>1</code>
         </p>
         <p className="Note">
-          You can use this to animate the end of a "drag" motion, once the user
-          lift its finger but the object has some velocity left.
+          You can use this to animate the end of a &quot;drag&quot; motion, once
+          the user lift its finger but the object has some velocity left.
         </p>
         <Decay />
         <p>
-          You can adjust the "force" of the decay by changing the{" "}
+          You can adjust the &quot;force&quot; of the decay by changing the{" "}
           <code>angularFrequency</code>
         </p>
         <DecayAngularFreq />

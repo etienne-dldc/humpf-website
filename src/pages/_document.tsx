@@ -19,15 +19,17 @@ export default class MyDocument extends Document {
   render(): JSX.Element {
     return (
       <Html>
-        <Head />
-        <body>
-          {/* Google Tag Manager (noscript) */}
-          <noscript
-            dangerouslySetInnerHTML={{
-              __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MRZ3XJS" height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
-            }}
+        <Head>
+          <link
+            href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap"
+            rel="stylesheet"
           />
-          {/* End Google Tag Manager (noscript) */}
+          <link
+            href="https://unpkg.com/sanitize.css@11.0.1/sanitize.css"
+            rel="stylesheet"
+          />
+        </Head>
+        <body>
           <Main />
           <NextScript />
         </body>
