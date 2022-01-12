@@ -38,7 +38,7 @@ export default class MyApp extends App {
             <meta name="theme-color" content="#ffffff" />
 
             <meta name="twitter:card" content="summary_large_image" />
-            <meta name="twitter:site" content="@Etienne_dot_js" />
+            <meta name="twitter:site" content="@EtienneTech" />
             <meta
               name="twitter:title"
               content="Humpf - Using Damped Springs for animations"

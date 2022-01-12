@@ -16,8 +16,7 @@ export function MainLayout({ children, currentPage }: Props): JSX.Element {
       <main className="Content">{children}</main>
       <footer className="Footer">
         <p>
-          Made by{" "}
-          <a href="https://twitter.com/Etienne_dot_js">@Etienne_dot_js</a>
+          Made by <a href="https://dldc.dev/twitter">@EtienneTech</a>
         </p>
       </footer>
     </div>
