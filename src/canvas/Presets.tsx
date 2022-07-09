@@ -3,7 +3,8 @@ import { CurveCanvas } from "../components/CurveCanvas";
 import { Spring, SpringConfig } from "humpf";
 import { CodeBlock } from "../components/CodeBlock";
 
-type Preset = "basic" | "gentle" | "wobbly" | "stiff" | "slow";
+const PRESETS = ["defaults", "basic", "gentle", "wobbly", "stiff", "slow"] as const;
+type Preset = typeof PRESETS[number];
 
 export function Presets(): JSX.Element {
   const [preset, setPreset] = useState<Preset>("basic");
@@ -15,44 +16,19 @@ export function Presets(): JSX.Element {
   return (
     <div>
       <div className="Buttons">
-        <button
-          className={"Button" + (preset === "basic" ? " Button--active" : "")}
-          onClick={() => setPreset("basic")}
-        >
-          basic
-        </button>
-        <div className="Buttons--space" />
-        <button
-          className={"Button" + (preset === "gentle" ? " Button--active" : "")}
-          onClick={() => setPreset("gentle")}
-        >
-          gentle
-        </button>
-        <div className="Buttons--space" />
-        <button
-          className={"Button" + (preset === "wobbly" ? " Button--active" : "")}
-          onClick={() => setPreset("wobbly")}
-        >
-          wobbly
-        </button>
-        <div className="Buttons--space" />
-        <button
-          className={"Button" + (preset === "stiff" ? " Button--active" : "")}
-          onClick={() => setPreset("stiff")}
-        >
-          stiff
-        </button>
-        <div className="Buttons--space" />
-        <button
-          className={"Button" + (preset === "slow" ? " Button--active" : "")}
-          onClick={() => setPreset("slow")}
-        >
-          slow
-        </button>
+        {PRESETS.map((p) => (
+          <button key={p} className={"Button" + (preset === p ? " Button--active" : "")} onClick={() => setPreset(p)}>
+            {p}
+          </button>
+        ))}
       </div>
       <CodeBlock
         code={`
           const spring = Spring(SpringConfig.${preset}());
+          // same as
+          // const spring = Spring({ angularFrequency: ${SpringConfig[preset]().angularFrequency}, dampingRatio: ${
+          SpringConfig[preset]().dampingRatio
+        } });
         `}
       />
       <CurveCanvas
@@ -62,7 +38,7 @@ export function Presets(): JSX.Element {
         autoStart={false}
         previewTime={2000}
         yMin={0}
-        yMax={120}
+        yMax={1.2}
         ratio={2 / 1}
       />
     </div>

@@ -127,16 +127,12 @@ blockquote p {
 .Buttons {
   display: flex;
   flex-direction: row;
+  gap: 0.5rem;
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 650px) {
   .Buttons {
     flex-direction: column;
   }
-}
-
-.Buttons--space {
-  width: 0.5rem;
-  height: 0.5rem;
 }
 
 .Slider {
@@ -408,8 +404,7 @@ blockquote p {
 .Canvas {
   border-radius: 6px;
   overflow: hidden;
-  box-shadow: 1rem 1rem 0px 0px #9e907c, 1rem -1rem 0px 0px #9e907c,
-    -1rem -1rem 0px 0px #9e907c, -1rem 1rem 0px 0px #9e907c;
+  box-shadow: 1rem 1rem 0px 0px #9e907c, 1rem -1rem 0px 0px #9e907c, -1rem -1rem 0px 0px #9e907c, -1rem 1rem 0px 0px #9e907c;
   margin: 0;
   background: #352831;
   touch-action: pan-y;
@@ -427,8 +422,8 @@ blockquote p {
   }
 
   .Canvas {
-    box-shadow: 0.5rem 0.5rem 0px 0px #9e907c, 0.5rem -0.5rem 0px 0px #9e907c,
-      -0.5rem -0.5rem 0px 0px #9e907c, -0.5rem 0.5rem 0px 0px #9e907c;
+    box-shadow: 0.5rem 0.5rem 0px 0px #9e907c, 0.5rem -0.5rem 0px 0px #9e907c, -0.5rem -0.5rem 0px 0px #9e907c,
+      -0.5rem 0.5rem 0px 0px #9e907c;
   }
 }
 

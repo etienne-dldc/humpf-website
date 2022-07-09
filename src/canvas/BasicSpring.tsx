@@ -7,10 +7,7 @@ interface Props {
   loop?: boolean;
 }
 
-export function BasicSpring({
-  autoStart = false,
-  loop = false,
-}: Props): JSX.Element {
+export function BasicSpring({ autoStart = false, loop = false }: Props): JSX.Element {
   const spring = useMemo(
     () =>
       Spring({
@@ -25,13 +22,13 @@ export function BasicSpring({
   return (
     <CurveCanvas
       position={position}
-      duration={3000}
+      duration={5000}
       restartOnChange={false}
       autoStart={autoStart}
       loop={loop}
       previewTime={3000}
       yMin={0}
-      yMax={150}
+      yMax={1.5}
       ratio={2 / 1}
     />
   );

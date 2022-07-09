@@ -255,7 +255,7 @@ export default function Article(): JSX.Element {
             // we update the equilibrium but keep the current position
             spring = Spring({
               timeStart: Date.now(),
-              position: spring(Date.now()).pos,
+              position: spring(Date.now()).position,
               equilibrium: menuHiddenOffset
             });
           `}
@@ -307,9 +307,9 @@ export default function Article(): JSX.Element {
             // we update the equilibrium but keep the current position and velocity
             spring = Spring({
               timeStart: Date.now(),
-              position: spring(Date.now()).pos,
-              velocity: spring(Date.now()).vel,
-              equilibrium: menuHiddenOffset
+              position: spring(Date.now()).position,
+              velocity: spring(Date.now()).velocity,
+              equilibrium: mouseEvent.clientX
             });
           `}
         />
