@@ -1,13 +1,15 @@
 import { useCallback, useRef } from "react";
 import { InitCanvas, Canvas } from "../components/Canvas";
-import { SpringValue, SpringConfig } from "humpf";
+import { SpringSequence, SpringConfig } from "humpf";
 import { CodeBlock } from "../components/CodeBlock";
 
 export function SpringValueDemo(): JSX.Element {
   const divRef = useRef<HTMLDivElement>(null);
 
   const canvasInit = useCallback<InitCanvas>((ctx, data) => {
-    const xValue = SpringValue(SpringConfig.static(data.width / 2));
+    const xValue = SpringSequence.create({
+      initial: { position: data.width / 2 },
+    });
 
     let pointerId: number | null = null;
 
@@ -20,7 +22,7 @@ export function SpringValueDemo(): JSX.Element {
           pointerId = event.pointerId;
         }
         if (event.pointerId === pointerId) {
-          xValue.update({
+          xValue.insertAt(Date.now(), {
             equilibrium: event.offsetX - 15,
           });
         }
@@ -39,7 +41,7 @@ export function SpringValueDemo(): JSX.Element {
     return {
       draw: ({ height, width }) => {
         const ballSize = height * 0.5;
-        const x = xValue.position();
+        const x = xValue.spring.position(Date.now());
         ctx.clearRect(0, 0, width, height);
         ctx.beginPath();
         ctx.arc(x, height / 2, ballSize / 2, 0, 2 * Math.PI);

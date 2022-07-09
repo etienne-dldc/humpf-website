@@ -1,14 +1,13 @@
 import { useCallback, useRef } from "react";
 import { InitCanvas, Canvas } from "../components/Canvas";
-import { SpringValue, SpringConfig } from "humpf";
+import { SpringSequence, SpringConfig } from "humpf";
 
 export const FollowMouseNoVelocity = () => {
   const divRef = useRef<HTMLDivElement>(null);
 
   const canvasInit = useCallback<InitCanvas>((ctx, data) => {
-    const xValue = SpringValue({
-      ...SpringConfig.static(data.width / 2),
-      dampingRatio: 0.3,
+    const xValue = SpringSequence.create({
+      defaultConfig: { dampingRatio: 0.3 },
     });
 
     let pointerId: number | null = null;
@@ -22,7 +21,7 @@ export const FollowMouseNoVelocity = () => {
           pointerId = event.pointerId;
         }
         if (event.pointerId === pointerId) {
-          xValue.replace({
+          xValue.insertAt(Date.now(), {
             equilibrium: event.offsetX - 15,
             velocity: 0,
           });
@@ -42,7 +41,7 @@ export const FollowMouseNoVelocity = () => {
     return {
       draw: ({ height, width }) => {
         const ballSize = height * 0.5;
-        const x = xValue.position();
+        const x = xValue.spring.position(Date.now());
         ctx.clearRect(0, 0, width, height);
         ctx.beginPath();
         ctx.arc(x, height / 2, ballSize / 2, 0, 2 * Math.PI);

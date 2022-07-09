@@ -17,7 +17,7 @@ export function AngularFrequency(): JSX.Element {
     [angularFrequency]
   );
 
-  const position = useCallback((x) => spring(x).pos, [spring]);
+  const position = useCallback((x: number) => spring(x).position, [spring]);
 
   return (
     <div>

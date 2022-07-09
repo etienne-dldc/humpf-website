@@ -21,7 +21,7 @@ export function Config({ showCode = true }: Props): JSX.Element {
     [angularFreq, dampingRatio]
   );
 
-  const position = useCallback((x) => spring(x).pos, [spring]);
+  const position = useCallback((x: number) => spring.position(x), [spring]);
 
   return (
     <div>

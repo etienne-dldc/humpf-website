@@ -16,7 +16,7 @@ export function DampingRatio(): JSX.Element {
     [dampingRatio]
   );
 
-  const position = useCallback((x) => spring(x).pos, [spring]);
+  const position = useCallback((x: number) => spring.position(x), [spring]);
 
   return (
     <div>

@@ -2,7 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import { getSize, useElementSize } from "../hooks/useElementSize";
 import { MenuIcon } from "./MenuIcon";
 import { XIcon } from "./XIcon";
-import { SpringValue } from "humpf";
+import { SpringSequence } from "humpf";
+import { cp } from "fs/promises";
 
 export const MenuAnimBasic = () => {
   const divRef = useRef<HTMLDivElement | null>(null);
@@ -16,7 +17,7 @@ export const MenuAnimBasic = () => {
   const hiddenTranslate = -(menuWidth + 30);
 
   const rafRef = useRef<number | null>(null);
-  const springValueRef = useRef<SpringValue>();
+  const springSeqRef = useRef<SpringSequence>();
 
   useEffect(() => {
     const width = getSize(divRef.current).width;
@@ -26,22 +27,24 @@ export const MenuAnimBasic = () => {
       menuRef.current.style.transform = `translate(${hiddenTranslate}px)`;
     }
 
-    const springValue = SpringValue(
-      { position: hiddenTranslate, equilibrium: hiddenTranslate },
-      {
-        onSpringChange: () => {
-          render();
-        },
-      }
+    const springSeq = SpringSequence.create(
+      { initial: { position: hiddenTranslate } }
+      // {
+      //   onSpringChange: () => {
+      //     render();
+      //   },
+      // }
     );
-    springValueRef.current = springValue;
+    springSeqRef.current = springSeq;
     const render = () => {
-      if (springValue.stable()) {
-        rafRef.current = null;
-        return;
-      }
+      // if (springValue.stable()) {
+      //   rafRef.current = null;
+      //   return;
+      // }
       if (menuRef.current) {
-        menuRef.current.style.transform = `translate(${springValue.position()}px)`;
+        menuRef.current.style.transform = `translate(${springSeq.spring.position(
+          Date.now()
+        )}px)`;
         rafRef.current = window.requestAnimationFrame(render);
       }
     };
@@ -83,8 +86,9 @@ export const MenuAnimBasic = () => {
           }}
           onClick={() => {
             setVisible((p) => !p);
-            if (springValueRef.current) {
-              springValueRef.current.replace(
+            if (springSeqRef.current) {
+              springSeqRef.current.replaceAll(
+                Date.now(),
                 visible
                   ? { position: 0, equilibrium: hiddenTranslate, velocity: 0 }
                   : { position: hiddenTranslate, equilibrium: 0, velocity: 0 }

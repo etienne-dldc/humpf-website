@@ -10,7 +10,7 @@ export function Presets(): JSX.Element {
 
   const spring = useMemo(() => Spring(SpringConfig[preset]()), [preset]);
 
-  const position = useCallback((x) => spring(x).pos, [spring]);
+  const position = useCallback((x: number) => spring.position(x), [spring]);
 
   return (
     <div>

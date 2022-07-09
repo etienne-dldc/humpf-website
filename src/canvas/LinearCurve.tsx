@@ -2,7 +2,7 @@ import { useCallback } from "react";
 import { CurveCanvas } from "../components/CurveCanvas";
 
 export const LinearCurve = () => {
-  const position = useCallback((x) => x * (1 / 15), []);
+  const position = useCallback((x: number) => x * (1 / 15), []);
 
   return (
     <CurveCanvas

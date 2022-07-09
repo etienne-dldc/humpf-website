@@ -20,7 +20,7 @@ export function BasicSpring({
     []
   );
 
-  const position = useCallback((x) => spring(x).pos, [spring]);
+  const position = useCallback((x: number) => spring.position(x), [spring]);
 
   return (
     <CurveCanvas

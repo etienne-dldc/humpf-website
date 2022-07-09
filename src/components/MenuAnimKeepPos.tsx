@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { getSize, useElementSize } from "../hooks/useElementSize";
 import { MenuIcon } from "./MenuIcon";
 import { XIcon } from "./XIcon";
-import { SpringValue } from "humpf";
+import { SpringSequence } from "humpf";
 
 export const MenuAnimKeepPos = () => {
   const divRef = useRef<HTMLDivElement | null>(null);
@@ -16,7 +16,7 @@ export const MenuAnimKeepPos = () => {
   const hiddenTranslate = -(menuWidth + 30);
 
   const rafRef = useRef<number | null>(null);
-  const springValueRef = useRef<SpringValue>();
+  const springSeqRef = useRef<SpringSequence>();
 
   useEffect(() => {
     const width = getSize(divRef.current).width;
@@ -26,22 +26,25 @@ export const MenuAnimKeepPos = () => {
       menuRef.current.style.transform = `translate(${hiddenTranslate}px)`;
     }
 
-    const springValue = SpringValue(
-      { position: hiddenTranslate, equilibrium: hiddenTranslate },
-      {
-        onSpringChange: () => {
-          render();
-        },
-      }
+    const springValue = SpringSequence.create(
+      { initial: { position: hiddenTranslate } }
+      // { position: hiddenTranslate, equilibrium: hiddenTranslate },
+      // {
+      //   onSpringChange: () => {
+      //     render();
+      //   },
+      // }
     );
-    springValueRef.current = springValue;
+    springSeqRef.current = springValue;
     const render = () => {
-      if (springValue.stable()) {
-        rafRef.current = null;
-        return;
-      }
+      // if (springValue.stable()) {
+      //   rafRef.current = null;
+      //   return;
+      // }
       if (menuRef.current) {
-        menuRef.current.style.transform = `translate(${springValue.position()}px)`;
+        menuRef.current.style.transform = `translate(${springValue.spring.position(
+          Date.now()
+        )}px)`;
         rafRef.current = window.requestAnimationFrame(render);
       }
     };
@@ -83,12 +86,12 @@ export const MenuAnimKeepPos = () => {
           }}
           onClick={() => {
             setVisible((p) => !p);
-            if (springValueRef.current) {
-              springValueRef.current.replace(
-                visible
-                  ? { equilibrium: hiddenTranslate, velocity: 0 }
-                  : { equilibrium: 0, velocity: 0 }
-              );
+            if (springSeqRef.current) {
+              console.log("ok");
+              springSeqRef.current.insertAt(Date.now(), {
+                velocity: 0,
+                equilibrium: visible ? hiddenTranslate : 0,
+              });
             }
           }}
         >
